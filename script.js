@@ -1,32 +1,53 @@
-const box = document.getElementById("box");
-const button = document.getElementById("startBtn");
+const orb=document.getElementById("orb");
 
-function wait(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
+const btn=document.getElementById("startBtn");
+
+const particles=document.querySelectorAll(".particle");
+
+const msg=document.getElementById("message");
+
+function wait(ms){
+
+return new Promise(resolve=>setTimeout(resolve,ms));
+
 }
 
-async function playAnimations() {
+async function play(){
 
-    button.disabled = true;
+btn.disabled=true;
 
-    box.classList.remove("move", "grow", "color", "rotate");
+msg.classList.remove("showText");
 
-    // Restart animation
-    void box.offsetWidth;
+msg.innerHTML="";
 
-    box.classList.add("move");
-    await wait(1000);
+orb.className="";
 
-    box.classList.add("grow");
-    await wait(800);
+particles.forEach(p=>p.classList.remove("show"));
 
-    box.classList.add("color");
-    await wait(800);
+await wait(300);
 
-    box.classList.add("rotate");
-    await wait(1000);
+orb.classList.add("glow");
 
-    button.disabled = false;
+await wait(1000);
+
+orb.classList.add("pulse");
+
+await wait(900);
+
+orb.classList.add("move");
+
+await wait(900);
+
+particles.forEach(p=>p.classList.add("show"));
+
+await wait(1000);
+
+msg.innerHTML="✨ Energy Released Successfully!";
+
+msg.classList.add("showText");
+
+btn.disabled=false;
+
 }
 
-button.addEventListener("click", playAnimations);
+btn.addEventListener("click",play);
