@@ -1,37 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Glowing Orb Animation</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Glowing Orb</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
 
 <div class="container">
+  <h1>✨ Glowing Orb Animation</h1>
+  <p>Click the button to activate the orb.</p>
 
-    <h1>✨ Glowing Orb Animation</h1>
+  <button id="startBtn">Activate Orb</button>
 
-    <p>Click the button to activate the energy orb.</p>
+  <div class="scene">
+    <div id="orb"></div>
+  </div>
 
-    <button id="startBtn">Activate Orb</button>
-
-    <div class="scene">
-
-        <div id="orb"></div>
-
-        <div class="particle p1"></div>
-        <div class="particle p2"></div>
-        <div class="particle p3"></div>
-        <div class="particle p4"></div>
-        <div class="particle p5"></div>
-        <div class="particle p6"></div>
-
-    </div>
-
-    <h2 id="message"></h2>
-
+  <h2 id="message"></h2>
 </div>
 
 <script src="script.js"></script>
