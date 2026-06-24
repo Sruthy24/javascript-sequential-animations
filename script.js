@@ -1,60 +1,30 @@
 const box = document.getElementById("box");
 const button = document.getElementById("startBtn");
 
-function animateElement(keyframes, options) {
-    return new Promise(resolve => {
-        const animation = box.animate(keyframes, options);
-        animation.onfinish = resolve;
-    });
+function wait(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
 }
 
 async function playAnimations() {
 
     button.disabled = true;
 
-    await animateElement(
-        [
-            { transform: "translateX(0)" },
-            { transform: "translateX(380px)" }
-        ],
-        {
-            duration: 1000,
-            fill: "forwards"
-        }
-    );
+    box.classList.remove("move", "grow", "color", "rotate");
 
-    await animateElement(
-        [
-            { transform: "translateX(380px) scale(1)" },
-            { transform: "translateX(380px) scale(1.5)" }
-        ],
-        {
-            duration: 800,
-            fill: "forwards"
-        }
-    );
+    // Restart animation
+    void box.offsetWidth;
 
-    await animateElement(
-        [
-            { transform: "translateX(380px) scale(1.5)", background: "#2196f3" },
-            { transform: "translateX(380px) scale(1.5)", background: "#4caf50" }
-        ],
-        {
-            duration: 700,
-            fill: "forwards"
-        }
-    );
+    box.classList.add("move");
+    await wait(1000);
 
-    await animateElement(
-        [
-            { transform: "translateX(380px) rotate(0deg)" },
-            { transform: "translateX(380px) rotate(360deg)" }
-        ],
-        {
-            duration: 1000,
-            fill: "forwards"
-        }
-    );
+    box.classList.add("grow");
+    await wait(800);
+
+    box.classList.add("color");
+    await wait(800);
+
+    box.classList.add("rotate");
+    await wait(1000);
 
     button.disabled = false;
 }
